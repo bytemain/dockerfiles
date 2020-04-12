@@ -1,0 +1,7 @@
+{
+  "name": "v2ray",
+  "version": "1.0.0",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0"
+  }
+}
