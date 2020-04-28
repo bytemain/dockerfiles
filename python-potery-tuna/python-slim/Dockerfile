@@ -33,3 +33,5 @@ COPY . /src
 RUN poetry install --no-interaction --no-dev
 
 VOLUME /src
+
+ENTRYPOINT ["poetry", "run"]
