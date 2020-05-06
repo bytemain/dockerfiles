@@ -1,11 +1,14 @@
 #! Don't use directly, mod it to adapt to your project.
 FROM python:3.8.2-slim
 
-RUN sed -i 's|http://deb.debian.org|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list
-RUN sed -i 's|http://security.debian.org|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list
+RUN sed -i 's|http://deb.debian.org|https://mirrors.aliyun.com|g' /etc/apt/sources.list
+RUN sed -i 's|http://security.debian.org|https://mirrors.aliyun.com|g' /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends build-essential python3-dev python3-pip curl
+
+RUN python3 -m pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+
 RUN curl -sSL https://cdn.jsdelivr.net/gh/python-poetry/poetry/get-poetry.py | python3
 ENV PATH "/root/.poetry/bin:/opt/venv/bin:${PATH}"
 
