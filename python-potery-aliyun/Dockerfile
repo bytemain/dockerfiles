@@ -36,10 +36,4 @@ RUN poetry install --no-interaction --no-dev
 
 VOLUME /src
 
-RUN apt-get remove --purge -y build-essential curl \
-    && apt-get clean \
-    && apt-get autoclean -y \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
-
 ENTRYPOINT ["poetry", "run"]
