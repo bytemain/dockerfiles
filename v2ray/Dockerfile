@@ -2,11 +2,12 @@ FROM abiosoft/caddy:1.0.3
 LABEL maintainer "artin lengthmin@gmail.com"
 
 ARG TZ="Asia/Shanghai"
+ARG ACME_AGREE="true"
+ARG ENABLE_TELEMETRY="false"
 
-ENV TZ ${TZ}
-ENV V2RAY_VERSION v4.22.1 
-ENV V2RAY_LOG_DIR /var/log/v2ray
-ENV V2RAY_CONFIG_DIR /etc/v2ray/
+ARG V2RAY_VERSION="v4.23.1" 
+ARG V2RAY_LOG_DIR="/var/log/v2ray"
+ARG V2RAY_CONFIG_DIR="/etc/v2ray/"
 ENV V2RAY_DOWNLOAD_URL https://github.com/v2ray/v2ray-core/releases/download/${V2RAY_VERSION}/v2ray-linux-64.zip
 
 RUN apk upgrade --update \
@@ -32,24 +33,9 @@ RUN apk upgrade --update \
     && rm -rf /tmp/v2ray /var/cache/apk/*
 
 # node
-RUN apk add --no-cache util-linux
-RUN apk add --update nodejs nodejs-npm
+RUN apk add --no-cache util-linux nodejs
 
 WORKDIR /srv
-
-COPY package.json /srv/
-
-RUN npm install
-
-COPY v2ray.js /srv/
-
-# Let's Encrypt Agreement
-ENV ACME_AGREE="true"
-
-# Telemetry Stats
-ENV ENABLE_TELEMETRY="false"
-
-RUN apk add --no-cache openssh-client
 
 COPY . /srv/
 
@@ -60,4 +46,5 @@ RUN ["chmod", "+x", "/entrypoint.sh"]
 VOLUME /srv
 
 EXPOSE 443 80
+
 ENTRYPOINT ["/entrypoint.sh"]

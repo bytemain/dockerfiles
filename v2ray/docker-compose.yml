@@ -2,10 +2,9 @@ version: "3"
 services:
   v2ray_ws:
     build: .
+    image: "v2ray_ws"
+    container_name: "v2ray_ws"
     ports:
       - ${PORT_443}:443
       - ${PORT_80}:80
     command: ${YUMING} V2RAY_WS ${UUID}
-    volumes:
-      - ./srv:/srv
-      - /srv/node_modules
