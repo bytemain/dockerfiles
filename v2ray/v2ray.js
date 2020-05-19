@@ -1,5 +1,5 @@
 var fs = require("fs");
-fs.readFile("sebs.js", "utf8", function (err, data) {
+fs.readFile("sebs.json", "utf8", function (err, data) {
   if (err) throw err;
   node = JSON.parse(data);
   console.log("-----------------iOS小火箭链接--------------------");
