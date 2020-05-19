@@ -34,12 +34,15 @@ RUN apk upgrade --update \
 # node
 RUN apk add --no-cache util-linux
 RUN apk add --update nodejs nodejs-npm
-COPY package.json /srv/package.json
 
 WORKDIR /srv
+
+COPY package.json /srv/
+
 RUN npm install
 
-COPY v2ray.js /srv/v2ray.js
+COPY v2ray.js /srv/
+
 # Let's Encrypt Agreement
 ENV ACME_AGREE="true"
 
