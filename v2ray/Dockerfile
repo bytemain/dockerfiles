@@ -56,6 +56,8 @@ COPY web /srv/
 
 ADD entrypoint.sh /entrypoint.sh
 
+RUN ["chmod", "+x", "/entrypoint.sh"]
+
 VOLUME /srv
 
 EXPOSE 443 80
