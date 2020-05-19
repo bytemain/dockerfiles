@@ -49,13 +49,9 @@ ENV ACME_AGREE="true"
 # Telemetry Stats
 ENV ENABLE_TELEMETRY="false"
 
-RUN apk add --no-cache openssh-client git
+RUN apk add --no-cache openssh-client
 
-# validate install
-RUN caddy -version
-RUN caddy -plugins
-
-COPY web /srv/
+COPY . /srv/
 
 ADD entrypoint.sh /entrypoint.sh
 
