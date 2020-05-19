@@ -1,3 +1,6 @@
+srv
+.env
+
 # Logs
 logs
 *.log

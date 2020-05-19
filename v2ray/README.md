@@ -7,8 +7,4 @@
 
 ## 使用
 
-创建一个 .env 文件，里面填入要解析的域名
-
-```dotenv
-YUMING=xxx.example.com
-```
+将 `.env.example` 重命名为 `.env`，修改里面的内容。
