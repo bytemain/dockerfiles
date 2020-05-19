@@ -1,8 +1,8 @@
 version: "3"
 services:
   v2ray_ws:
-    image: .
+    build: .
     ports:
-      - "443:443"
-      - "8880:80"
-    command: pr.artin.li V2RAY_WS 
+      - 443:443
+      - 8880:80
+    command: ${YUMING} V2RAY_WS
